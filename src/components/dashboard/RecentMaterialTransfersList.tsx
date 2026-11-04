@@ -36,16 +36,16 @@ export const RecentMaterialTransfersList: React.FC<{ transfers: MaterialTransfer
                     <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded">
                       {formatDate(item.date, 'dd MMM yyyy')}
                     </span>
-                    <div className="flex items-center gap-1 text-xs font-semibold text-slate-800">
+                    {item.from_location || item.to_location ? <div className="flex items-center gap-1 text-xs font-semibold text-slate-800">
                       <MapPin className="w-3 h-3 text-slate-400" />
                       <span>{item.from_location}</span>
                       <ArrowRight className="w-3 h-3 text-slate-400" />
                       <span>{item.to_location}</span>
-                    </div>
+                    </div> : <span className="text-[11px] font-semibold text-slate-500">Other expense</span>}
                   </div>
                   <p className="text-xs text-slate-600 line-clamp-1 leading-relaxed">{item.activity}</p>
                   <div className="text-[11px] text-slate-400 font-mono">
-                    Distance: {formatKilometers(item.total_kilometer)}
+                    {Number(item.total_kilometer) > 0 ? `Distance: ${formatKilometers(item.total_kilometer)}` : 'Expense entry'}
                   </div>
                 </div>
 

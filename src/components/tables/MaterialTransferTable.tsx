@@ -198,15 +198,15 @@ export const MaterialTransferTable: React.FC<MaterialTransferTableProps> = ({
                     </td>
 
                     <td className="py-3.5 px-4 text-slate-700 whitespace-nowrap">
-                      <div className="flex items-center gap-1.5 font-medium">
+                      {item.from_location || item.to_location ? <div className="flex items-center gap-1.5 font-medium">
                         <span className="text-slate-900">{item.from_location}</span>
                         <ArrowRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                         <span className="text-slate-900">{item.to_location}</span>
-                      </div>
+                      </div> : <span className="text-slate-400">Expense only</span>}
                     </td>
 
                     <td className="py-3.5 px-4 text-right font-mono font-semibold text-slate-900 whitespace-nowrap">
-                      {formatKilometers(item.total_kilometer)}
+                      {Number(item.total_kilometer) > 0 ? formatKilometers(item.total_kilometer) : '—'}
                     </td>
 
                     <td className="py-3.5 px-4 text-right font-mono font-bold text-emerald-700 whitespace-nowrap">
@@ -263,12 +263,12 @@ export const MaterialTransferTable: React.FC<MaterialTransferTableProps> = ({
                 </div>
               </div>
 
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-800 bg-slate-50 p-2.5 rounded-lg">
+              {(item.from_location || item.to_location) && <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-800 bg-slate-50 p-2.5 rounded-lg">
                 <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 <span className="truncate">{item.from_location}</span>
                 <ArrowRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 <span className="truncate">{item.to_location}</span>
-              </div>
+              </div>}
 
               <div className="text-xs text-slate-700 leading-relaxed bg-slate-50/70 p-2.5 rounded-lg border border-slate-100">
                 {item.activity}
@@ -276,7 +276,7 @@ export const MaterialTransferTable: React.FC<MaterialTransferTableProps> = ({
 
               <div className="flex items-center justify-between text-xs text-slate-600 pt-1">
                 <span>Distance:</span>
-                <span className="font-mono font-bold text-slate-900">{formatKilometers(item.total_kilometer)}</span>
+                <span className="font-mono font-bold text-slate-900">{Number(item.total_kilometer) > 0 ? formatKilometers(item.total_kilometer) : '—'}</span>
               </div>
 
               <div className="pt-2 flex items-center justify-end gap-2 border-t border-slate-100">

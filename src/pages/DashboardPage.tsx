@@ -264,36 +264,7 @@ export const DashboardPage: React.FC = () => {
         />
       </div>
 
-      {/* Admin Quick Overview Card */}
-      {isAdmin && (
-        <div className="bg-gradient-to-r from-slate-900 to-blue-950 rounded-xl p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-800 shadow-md">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white shrink-0">
-              <Users className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-sm">Company Workforce Management</h4>
-              <p className="text-xs text-slate-300 mt-0.5">
-                <span className="font-black text-white text-base mr-1">{totalEmployeesCount}</span> registered employees active in system.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Link
-              to="/employees"
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition flex items-center gap-1.5"
-            >
-              Manage Employees <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              to="/reports"
-              className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition"
-            >
-              Company Reports
-            </Link>
-          </div>
-        </div>
-      )}
+      
 
       {/* Recent Records & Mini Calendar */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -373,15 +344,7 @@ export const DashboardPage: React.FC = () => {
           </Card>
 
           {/* Quick tips card */}
-          <div className="bg-slate-100/70 rounded-xl p-4 border border-slate-200/80 text-xs text-slate-600 space-y-2">
-            <div className="flex items-center gap-2 font-bold text-slate-900">
-              <TrendingUp className="w-4 h-4 text-blue-600" />
-              <span>Supabase Connected</span>
-            </div>
-            <p className="leading-relaxed">
-              Your attendance, activity, and transfer records are securely stored in your organization's Supabase project.
-            </p>
-          </div>
+          
         </div>
       </div>
 
